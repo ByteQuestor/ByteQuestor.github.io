@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>标签: 负载均衡 | 王子阳の主页</title><meta name="author" content="王子阳"><meta name="copyright" content="王子阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="天地本无全">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王子阳の主页">
+<meta property="og:url" content="http://example.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.html">
+<meta property="og:site_name" content="王子阳の主页">
+<meta property="og:description" content="天地本无全">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png">
+<meta property="article:author" content="王子阳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png"><link rel="shortcut icon" href="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png"><link rel="canonical" href="http://example.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.0.0-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '标签: 负载均衡',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-10-07 08:04:03'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(https://raw.gitmirror.com/ByteQuestor/picture/main/WhatYourName.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">王子阳の主页</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">负载均衡</h1></div></header><main class="layout" id="content-inner"><div id="tag"><div class="article-sort-title">标签 - 负载均衡</div><div class="article-sort"><div class="article-sort-item year">2024</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2024/09/19/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8A%E9%83%A8%E7%BD%B2todo%E5%B9%B6%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="在腾讯云上部署todo并配置负载均衡"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/tencent/tencent.png" alt="在腾讯云上部署todo并配置负载均衡" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2024-09-19T17:07:45.000Z" title="发表于 2024-09-19 17:07:45">2024-09-19</time></div><a class="article-sort-item-title" href="/2024/09/19/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8A%E9%83%A8%E7%BD%B2todo%E5%B9%B6%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="在腾讯云上部署todo并配置负载均衡">在腾讯云上部署todo并配置负载均衡</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/" title="记录nginx的使用"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/nginx/nginx.jpg" alt="记录nginx的使用" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2024-09-18T20:38:06.000Z" title="发表于 2024-09-18 20:38:06">2024-09-18</time></div><a class="article-sort-item-title" href="/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/" title="记录nginx的使用">记录nginx的使用</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">王子阳</div><div class="author-info-description">天地本无全</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ByteQuestor"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一定是平时练习总是 差不多 差不多 关键时刻总是差一点</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/02/%E5%9C%A8Centos7-9%E4%B8%8A%E6%89%8B%E5%B7%A5%E9%83%A8%E7%BD%B2k8s/" title="在Centos7.9上手工部署k8s"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/k8s130.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Centos7.9上手工部署k8s"/></a><div class="content"><a class="title" href="/2024/10/02/%E5%9C%A8Centos7-9%E4%B8%8A%E6%89%8B%E5%B7%A5%E9%83%A8%E7%BD%B2k8s/" title="在Centos7.9上手工部署k8s">在Centos7.9上手工部署k8s</a><time datetime="2024-10-02T22:09:52.000Z" title="发表于 2024-10-02 22:09:52">2024-10-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E5%B7%A5%E5%9C%A8%E6%AC%A7%E6%8B%89%E4%B8%8A%E9%83%A8%E7%BD%B2OpenStack/" title="记一次手工在欧拉上部署OpenStack"><img src="https://raw.gitmirror.com//ByteQuestor/picture/main/openstack1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一次手工在欧拉上部署OpenStack"/></a><div class="content"><a class="title" href="/2024/09/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E5%B7%A5%E5%9C%A8%E6%AC%A7%E6%8B%89%E4%B8%8A%E9%83%A8%E7%BD%B2OpenStack/" title="记一次手工在欧拉上部署OpenStack">记一次手工在欧拉上部署OpenStack</a><time datetime="2024-09-30T21:44:37.000Z" title="发表于 2024-09-30 21:44:37">2024-09-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/29/Hexo%E9%85%8D%E5%90%88GithubAction%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo配合GithubAction自动化部署个人博客"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/GitHub-Logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo配合GithubAction自动化部署个人博客"/></a><div class="content"><a class="title" href="/2024/09/29/Hexo%E9%85%8D%E5%90%88GithubAction%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo配合GithubAction自动化部署个人博客">Hexo配合GithubAction自动化部署个人博客</a><time datetime="2024-09-29T23:04:32.000Z" title="发表于 2024-09-29 23:04:32">2024-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/%E4%B8%80%E7%AF%87%E5%AD%A6%E4%B9%A0k8s%E7%9A%84%E8%AE%B0%E5%BD%95/" title="一篇学习k8s的记录"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/kubernetes/k8s.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一篇学习k8s的记录"/></a><div class="content"><a class="title" href="/2024/09/21/%E4%B8%80%E7%AF%87%E5%AD%A6%E4%B9%A0k8s%E7%9A%84%E8%AE%B0%E5%BD%95/" title="一篇学习k8s的记录">一篇学习k8s的记录</a><time datetime="2024-09-21T08:29:14.000Z" title="发表于 2024-09-21 08:29:14">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/19/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8A%E9%83%A8%E7%BD%B2todo%E5%B9%B6%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="在腾讯云上部署todo并配置负载均衡"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/tencent/tencent.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在腾讯云上部署todo并配置负载均衡"/></a><div class="content"><a class="title" href="/2024/09/19/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8A%E9%83%A8%E7%BD%B2todo%E5%B9%B6%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="在腾讯云上部署todo并配置负载均衡">在腾讯云上部署todo并配置负载均衡</a><time datetime="2024-09-19T17:07:45.000Z" title="发表于 2024-09-19 17:07:45">2024-09-19</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/k8s/" style="font-size: 1.5em; color: #99a9bf">k8s</a> <a href="/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" style="font-size: 1.23em; color: #999ea6">灰度发布</a> <a href="/tags/%E5%85%AC%E6%9C%89%E4%BA%91/" style="font-size: 1.1em; color: #999">公有云</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/OpenStack/" style="font-size: 1.1em; color: #999">OpenStack</a> <a href="/tags/istio/" style="font-size: 1.37em; color: #99a4b2">istio</a> <a href="/tags/CICD/" style="font-size: 1.1em; color: #999">CICD</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 1.1em; color: #999">腾讯云</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.23em; color: #999ea6">C语言</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 1.23em; color: #999ea6">负载均衡</a> <a href="/tags/AB%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">AB测试</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/10/">
+          <span class="card-archive-list-date">十月 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">九月 2024</span>
+          <span class="card-archive-list-count">15</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">16</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-10-07T08:04:03.266Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 王子阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.0.0-b2"></script><script src="/js/main.js?v=5.0.0-b2"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="25px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
