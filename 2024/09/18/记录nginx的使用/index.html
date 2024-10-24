@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>记录nginx的使用 | 王子阳の主页</title><meta name="author" content="王子阳"><meta name="copyright" content="王子阳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="以前总是对这个nginx很感兴趣，但是一直没怎么用，最近决定一举拿下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录nginx的使用">
+<meta property="og:url" content="http://example.com/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="王子阳の主页">
+<meta property="og:description" content="以前总是对这个nginx很感兴趣，但是一直没怎么用，最近决定一举拿下">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.gitmirror.com/ByteQuestor/picture/main/nginx/nginx.jpg">
+<meta property="article:published_time" content="2024-09-18T20:38:06.000Z">
+<meta property="article:modified_time" content="2024-10-24T08:32:48.476Z">
+<meta property="article:author" content="王子阳">
+<meta property="article:tag" content="负载均衡">
+<meta property="article:tag" content="nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.gitmirror.com/ByteQuestor/picture/main/nginx/nginx.jpg"><link rel="shortcut icon" href="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png"><link rel="canonical" href="http://example.com/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.0.0-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记录nginx的使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-24 08:32:48'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://raw.gitmirror.com/ByteQuestor/picture/main/nginx/nginx.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">王子阳の主页</span></a><a class="nav-page-title" href="/"><span class="site-name">记录nginx的使用</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">记录nginx的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-18T20:38:06.000Z" title="发表于 2024-09-18 20:38:06">2024-09-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T08:32:48.476Z" title="更新于 2024-10-24 08:32:48">2024-10-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="nginx的安装"><a href="#nginx的安装" class="headerlink" title="nginx的安装"></a>nginx的安装</h1><p>本次使用yum在<code>centos7.9（能联网）</code>安装nginx</p>
+<h2 id="准备yum源"><a href="#准备yum源" class="headerlink" title="准备yum源"></a>准备yum源</h2><p>复制下列命令粘贴后执行（注意有删除命令，应在纯净系统搞）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">rm -rf /etc/yum.repos.d/*</span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">curl -o /etc/yum.repos.d/docker-ce.repo https://mirrors.cloud.tencent.com/docker-ce/linux/centos/docker-ce.repo </span><br><span class="line">yum makecache</span><br><span class="line">yum install epel-release -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nginx</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl enable nginx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>为了在同一台虚拟机里，实现起多个容器，实现负载均衡的效果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y docker-ce</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>加载<code>nginx</code>容器镜像（这两个是为了开两个容器，使用本机代理到两个容器，两个容器中会存放两个不同的网页以区分负载均衡效果）</p>
+<p>本节用到的镜像链接<code>此链接永久有效</code></p>
+<p>&lt;此处插入百度网盘永久地址&gt;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i nginx_latest.tar</span><br></pre></td></tr></table></figure>
+
+<h1 id="编写简易网页和dockerfile"><a href="#编写简易网页和dockerfile" class="headerlink" title="编写简易网页和dockerfile"></a>编写简易网页和dockerfile</h1><ul>
+<li><p>1.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1111111111111</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2222222222222</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docker_nginx1</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:latest</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> 1.html /usr/share/nginx/html/index.html</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;nginx&quot;</span>,<span class="string">&quot;-g&quot;</span>,<span class="string">&quot;daemon off;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docker_nginx2</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:latest</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> 2.html /usr/share/nginx/html/index.html</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;nginx&quot;</span>,<span class="string">&quot;-g&quot;</span>,<span class="string">&quot;daemon off;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx1:v1 -f docker_nginx1 .</span><br><span class="line">docker build -t nginx2:v1 -f docker_nginx2 .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8090:80 nginx1:v1</span><br><span class="line">docker run -d -p 8091:80 nginx2:v1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问</p>
+<ul>
+<li>浏览器访问8090<br><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/002.png" alt="nginx配置"></li>
+<li>浏览器访问8091<br><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/003.png" alt="nginx配置"></li>
+<li>本地&#96;&#96;curl&#96;访问<br><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/004.png" alt="nginx配置"></li>
+</ul>
+</li>
+</ul>
+<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><p>即请求到某个域名&#x2F;端口被nginx接收到，nginx会根据配置把特定的请求转发到对应的服务器，类似DNS，本次</p>
+<h2 id="修改nginx配置文件"><a href="#修改nginx配置文件" class="headerlink" title="修改nginx配置文件"></a>修改nginx配置文件</h2><p>常用配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>另一个配置文件位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">/etc/nginx/sites-enabled# </span><span class="language-bash"><span class="built_in">cat</span> default</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看容器信息（比如IP）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect $ID</span><br></pre></td></tr></table></figure>
+
+<p>配置文件写容器IP可进行代理</p>
+<p><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/005.png" alt="nginx配置"></p>
+<h2 id="重启nginx并访问"><a href="#重启nginx并访问" class="headerlink" title="重启nginx并访问"></a>重启nginx并访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>成功代理</p>
+<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>修改配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/006.png" alt="nginx配置"></p>
+<h1 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h1><p><code>keepalive</code></p>
+<p>如果长连接进来，必须保证其保持指定时间</p>
+<p><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/Ink8sUpdateWeatherForecast/nginx/007.png" alt="nginx配置"></p>
+<h1 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h1><ul>
+<li><p>failover：失效转移<br><code>Fail-Over</code>的含义为“失效转移”，是一种备份操作模式，当主要组件异常时，其功能转移到备份组件。其要点在于有主有备，且主故障时备可启用，并设置为主。如Mysql的双Master模式，当正在使用的Master出现故障时，可以拿备Master做主使用</p>
+</li>
+<li><p>failfast：快速失败<br>从字面含义看就是“快速失败”，尽可能的发现系统中的错误，使系统能够按照事先设定好的错误的流程执行，对应的方式是“fault-tolerant（错误容忍）”。以JAVA集合（Collection）的快速失败为例，当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。例如：当某一个线程A通过iterator去遍历某集合的过程中，若该集合的内容被其他线程所改变了；那么线程A访问集合时，就会抛出ConcurrentModificationException异常（发现错误执行设定好的错误的流程），产生fail-fast事件</p>
+</li>
+<li><p>failback：失效自动恢复<br><code>Fail-ove</code>r之后的自动恢复，在簇网络系统（有两台或多台服务器互联的网络）中，由于要某台服务器进行维修，需要网络资源和服务暂时重定向到备用系统。在此之后将网络资源和服务器恢复为由原始主机提供的过程，称为自动恢复</p>
+</li>
+<li><p>failsafe：失效安全<br><code>Fail-Safe</code>的含义为“失效安全”，即使在故障的情况下也不会造成伤害或者尽量减少伤害。维基百科上一个形象的例子是红绿灯的“冲突监测模块”当监测到错误或者冲突的信号时会将十字路口的红绿灯变为闪烁错误模式，而不是全部显示为绿灯</p>
+</li>
+</ul>
+<blockquote>
+<p>又没用上，下面内容纯当记录命令了</p>
+</blockquote>
+<hr>
+<h1 id="比赛要用到的命令"><a href="#比赛要用到的命令" class="headerlink" title="比赛要用到的命令"></a>比赛要用到的命令</h1><p>比如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET localhost:3000/api/v1/ping</span><br><span class="line">或</span><br><span class="line">看日志没报错就行</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h1><p>为了利用<code>tomcat</code>的8080端口来验证反向代理是否成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install java-11-openjdk</span><br><span class="line">java -version</span><br><span class="line">echo &quot;export JAVA_HOME=/usr/lib/jvm/java-11-openjdk&quot; &gt;&gt; ~/.bashrc </span><br><span class="line">echo &quot;export PATH=$PATH:$JAVA_HOME/bin&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc </span><br><span class="line"></span><br><span class="line">yum install -y tomcat</span><br><span class="line">systemctl start tomcat</span><br><span class="line">systemctl enable tomcat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="防火墙开放端口"><a href="#防火墙开放端口" class="headerlink" title="防火墙开放端口"></a>防火墙开放端口</h1><p>开放80端口访问nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent		# 回显 success </span><br><span class="line">firewall-cmd --reload  # 回显 success </span><br><span class="line">firewall-cmd --zone=public --query-port=80/tcp # 回显 yes</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/ByteQuestor">王子阳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/">http://example.com/2024/09/18/%E8%AE%B0%E5%BD%95nginx%E7%9A%84%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">王子阳の主页</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a><a class="post-meta__tags" href="/tags/nginx/">nginx</a></div><div class="post-share"><div class="social-share" data-image="https://raw.gitmirror.com/ByteQuestor/picture/main/nginx/nginx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://raw.gitmirror.com/ByteQuestor/picture/main/paywx.png" target="_blank"><img class="post-qr-code-img" src="https://raw.gitmirror.com/ByteQuestor/picture/main/paywx.png" alt="微信投喂"/></a><div class="post-qr-code-desc">微信投喂</div></li><li class="reward-item"><a href="https://raw.gitmirror.com/ByteQuestor/picture/main/zfbbpay.png" target="_blank"><img class="post-qr-code-img" src="https://raw.gitmirror.com/ByteQuestor/picture/main/zfbbpay.png" alt="支付宝投喂"/></a><div class="post-qr-code-desc">支付宝投喂</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/09/19/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="docker常用命令"><img class="cover" src="https://raw.gitmirror.com/ByteQuestor/picture/main/docker/docker.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">docker常用命令</div></div></a><a class="next-post pull-right" href="/2024/09/17/%E5%9C%A8k8s%E4%B8%8A%E5%AF%B9WeatherForecast%E8%BF%9B%E8%A1%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" title="在k8s上对WeatherForecast进行多服务灰度发布"><img class="cover" src="https://raw.gitmirror.com/ByteQuestor/picture/main/WeatherForecast.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">在k8s上对WeatherForecast进行多服务灰度发布</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/2024/09/19/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8A%E9%83%A8%E7%BD%B2todo%E5%B9%B6%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="在腾讯云上部署todo并配置负载均衡"><img class="cover" src="https://raw.gitmirror.com/ByteQuestor/picture/main/tencent/tencent.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-19</div><div class="title">在腾讯云上部署todo并配置负载均衡</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="https://raw.gitmirror.com//ByteQuestor/picture/main/myhead.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">王子阳</div><div class="author-info-description">天地本无全</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ByteQuestor"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一定是平时练习总是 差不多 差不多 关键时刻总是差一点</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87yum%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">准备yum源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-number">1.2.</span> <span class="toc-text">安装nginx</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-number">2.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E5%92%8Cdockerfile"><span class="toc-number">3.</span> <span class="toc-text">编写简易网页和dockerfile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">修改nginx配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%90%AFnginx%E5%B9%B6%E8%AE%BF%E9%97%AE"><span class="toc-number">4.2.</span> <span class="toc-text">重启nginx并访问</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">5.</span> <span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">长连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6"><span class="toc-number">7.</span> <span class="toc-text">容错机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">比赛要用到的命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85tomcat"><span class="toc-number">9.</span> <span class="toc-text">安装tomcat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3"><span class="toc-number">10.</span> <span class="toc-text">防火墙开放端口</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/24/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bdocker%E4%BD%BF%E7%94%A8/" title="记录一下docker使用"><img src="/./img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录一下docker使用"/></a><div class="content"><a class="title" href="/2024/10/24/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bdocker%E4%BD%BF%E7%94%A8/" title="记录一下docker使用">记录一下docker使用</a><time datetime="2024-10-24T16:31:51.000Z" title="发表于 2024-10-24 16:31:51">2024-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/23/%E5%9C%A8win%E4%B8%8A%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8/" title="在win上配置快捷键启动应用"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/windows.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在win上配置快捷键启动应用"/></a><div class="content"><a class="title" href="/2024/10/23/%E5%9C%A8win%E4%B8%8A%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8/" title="在win上配置快捷键启动应用">在win上配置快捷键启动应用</a><time datetime="2024-10-23T11:02:59.000Z" title="发表于 2024-10-23 11:02:59">2024-10-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%85%8D%E7%BD%AEwin%E4%B8%BB%E6%9C%BA%E6%98%A0%E5%B0%84/" title="记一次配置win主机映射"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/windows.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一次配置win主机映射"/></a><div class="content"><a class="title" href="/2024/10/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%85%8D%E7%BD%AEwin%E4%B8%BB%E6%9C%BA%E6%98%A0%E5%B0%84/" title="记一次配置win主机映射">记一次配置win主机映射</a><time datetime="2024-10-22T18:03:16.000Z" title="发表于 2024-10-22 18:03:16">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Debian%E5%AE%89%E8%A3%85docker%E8%BF%87%E7%A8%8B/" title="记一次Debian安装docker过程"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/debian.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一次Debian安装docker过程"/></a><div class="content"><a class="title" href="/2024/10/13/%E8%AE%B0%E4%B8%80%E6%AC%A1Debian%E5%AE%89%E8%A3%85docker%E8%BF%87%E7%A8%8B/" title="记一次Debian安装docker过程">记一次Debian安装docker过程</a><time datetime="2024-10-13T11:02:07.000Z" title="发表于 2024-10-13 11:02:07">2024-10-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/02/%E5%9C%A8Centos7-9%E4%B8%8A%E6%89%8B%E5%B7%A5%E9%83%A8%E7%BD%B2k8s/" title="在Centos7.9上手工部署k8s"><img src="https://raw.gitmirror.com/ByteQuestor/picture/main/k8s130.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Centos7.9上手工部署k8s"/></a><div class="content"><a class="title" href="/2024/10/02/%E5%9C%A8Centos7-9%E4%B8%8A%E6%89%8B%E5%B7%A5%E9%83%A8%E7%BD%B2k8s/" title="在Centos7.9上手工部署k8s">在Centos7.9上手工部署k8s</a><time datetime="2024-10-02T22:09:52.000Z" title="发表于 2024-10-02 22:09:52">2024-10-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 王子阳</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.0.0-b2"></script><script src="/js/main.js?v=5.0.0-b2"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="25px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
