@@ -27,7 +27,7 @@
       descr: 放松小游戏
     - name:  跑步记录
       link: https://bytequestor.github.io/running_page/
-      avatar: 
+      avatar: https://avatars.githubusercontent.com/u/122770024?v=4
       descr: 我的跑步记录
 - class_name: 网站
   class_desc: 值得推荐的网站
@@ -45,7 +45,7 @@
       avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
       descr: 社交分享平台
     - name: 王子阳跑步记录
-      link: https://bytequestor.github.io/running_page/
+      link: 
       # avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
       descr: 社交分享平台
     
